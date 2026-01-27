@@ -121,7 +121,9 @@ export default function AdminProductForm({ mode }) {
   };
 
   const previewSrc = form.imageUrl ? resolveImageUrl(form.imageUrl) : "";
-
+  const flecha = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 20" fill="none" stroke="#ffffff" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ display: "block" }}>
+      <path d="M11 17h6l-4 -5l4 -5h-6l-4 5z" />
+    </svg>;
   return (
     <div className="admin-page">
       <div className="admin-page__head">
@@ -131,9 +133,26 @@ export default function AdminProductForm({ mode }) {
           </h2>
           <p className="admin-page__desc">Completá los datos del producto</p>
         </div>
-        <Link className="btn" to="/admin/productos">
-          ← Volver
-        </Link>
+            <Link
+              to="/admin/productos"
+              className="btn"
+              style={{
+                marginBottom: 6,
+                backgroundColor: "#0a234b",
+                color: "#ffffff",
+                padding: "10px 16px",
+                borderRadius: "14px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                lineHeight: 1,
+                whiteSpace: "nowrap",
+              }}
+            >
+              <span style={{ display: "inline-flex", alignItems: "center" }}>{flecha}</span>
+              <span style={{ fontWeight: 800 }}>Volver</span>
+            </Link>
       </div>
 
       <form className="card admin-form" onSubmit={submit}>

@@ -34,7 +34,7 @@ export default function Navbar() {
             <img src={logo} alt="Logo" className="brand__logo-img" />
           </div>
           <div className="brand__text">
-            <div className="brand__title">JERVALT</div>
+            <div className="brand__title">JER<span>VALT</span></div>
             <div className="brand__sub">Corralón y Ferretería</div>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function Navbar() {
         </nav>
 
         <a
-          className="btn btn--primary"
+          className="btn btn--primary desktop-only"
           href={waLink("Hola! Quiero hacer una consulta.")
           }
           target="_blank"

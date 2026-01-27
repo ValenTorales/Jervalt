@@ -14,7 +14,20 @@ function waLink(message) {
 
 export default function Hero() {
   const bg = "https://res.cloudinary.com/dxa7jp1ew/image/upload/f_auto,q_auto/v1768590644/frente_gca1fg.jpg"
-
+  const flecha = <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="3 1 20 20"
+    fill="none"
+    stroke="#ffffff"
+    strokeWidth="1.75"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    style={{ display: "block" }}
+  >
+    <path d="M11 17h6l-4 -5l4 -5h-6l-4 5z" />
+  </svg>;
   return (
     <section className="hero" style={{ backgroundImage: `url(${bg})` }}>
       <div className="hero__overlay" />
@@ -23,12 +36,12 @@ export default function Hero() {
 
         <p className="hero__subtitle">
           Materiales de construcción, herramientas profesionales y asesoramiento experto.
-          Más de 20 años brindando soluciones para constructores y particulares.
+          Más de 5 años brindando soluciones para constructores y particulares.
         </p>
 
         <div className="hero__actions">
           <button className="btn btn--primary" onClick={() => scrollToId("productos")}>
-            Ver Productos <span aria-hidden="true">→</span>
+            <span aria-hidden="true">{flecha}</span>Ver Productos 
           </button>
 
           <a

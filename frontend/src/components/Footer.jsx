@@ -8,7 +8,7 @@ export default function Footer() {
             <img src={logo} alt="Logo" className="brand__logo-img" />
           </div>
           <div>
-            <div className="footer__title">Jervalt</div>
+            <div className="footer__title">JERVALT</div>
             <div className="footer__sub">Corralón y Ferreteria</div>
           </div>
         </div>
