@@ -70,8 +70,8 @@ export default function AdminProducts() {
 
       <div className="card admin-table admin-table--mobileLike">
         <div className="admin-table__row admin-table__head admin-table--4">
-          <div className="admin-col-center">Imagen</div>
-          <div className="desktop-only admin-col-center">Nombre</div>
+          <div className="desktop-only admin-col-center">Imagen</div>
+          <div className="admin-col-center">Nombre</div>
           <div className="admin-col-center">Categoría</div>
           <div className="admin-col-actions">Acciones</div>
         </div>
@@ -94,16 +94,16 @@ export default function AdminProducts() {
                   alt={p.name}
                   loading="lazy"
                 />
-                <div className="mobile-only admin-nameText">{p.name}</div>
+                <div className="mobile-only admin-nameText w600">{p.name}</div>
               </div>
 
-              <div className="admin-nameOnly desktop-only">{p.name}</div>
+              <div className="admin-nameOnly center desktop-only w600">{p.name}</div>
 
-              <div className="admin-catCell">{p.categoryName || "Sin categoría"}</div>
+              <div className="admin-catCell w600">{p.categoryName || "Sin categoría"}</div>
 
               <div className="admin-actionsRow">
-                <Link className="btn btn--sm" to={`/admin/productos/${p.id}/editar`}>Editar</Link>
-                <button className="btn btn--danger btn--sm" onClick={() => onDelete(p.id)}>Eliminar</button>
+                <Link className="btn btn--sm w600" to={`/admin/productos/${p.id}/editar`}>Editar</Link>
+                <button className="btn btn--danger btn--sm w600" onClick={() => onDelete(p.id)}>Eliminar</button>
               </div>
             </div>
           ))

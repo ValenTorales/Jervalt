@@ -45,6 +45,23 @@ export default function CategoryProducts() {
   const [usingMock, setUsingMock] = useState(false);
   const [categoryTitle, setCategoryTitle] = useState("");
 
+  const flecha = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 20"
+      fill="none"
+      stroke="#ffffff"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ display: "block" }}
+    >
+      <path d="M11 17h6l-4 -5l4 -5h-6l-4 5z" />
+    </svg>
+  );
+
   useEffect(() => {
     let alive = true;
 
@@ -52,7 +69,6 @@ export default function CategoryProducts() {
       try {
         setLoading(true);
 
-        // Opción 1 (recomendada): endpoint filtrado
         // GET /api/products?category=materiales
         const { data } = await api.get("/products", { params: { category: slug } });
         if (!alive) return;
@@ -61,7 +77,6 @@ export default function CategoryProducts() {
         setProducts(list);
         setUsingMock(false);
 
-        // Si el backend no te manda el nombre, lo derivamos
         const first = list[0];
         setCategoryTitle(first?.categoryName || first?.category?.name || slug);
       } catch {
@@ -92,6 +107,8 @@ export default function CategoryProducts() {
     });
   }, [products, q]);
 
+  const noResults = !loading && filtered.length === 0;
+
   return (
     <div className="app">
       <Navbar />
@@ -101,9 +118,8 @@ export default function CategoryProducts() {
           <h2 className="section__title" style={{ marginBottom: 6 }}>
             {categoryTitle || "Categoría"}
           </h2>
-          <p className="section__desc">
-            Productos disponibles en esta categoría.
-          </p>
+
+          <p className="section__desc">Productos disponibles en esta categoría.</p>
 
           <div className="products-toolbar">
             <input
@@ -112,9 +128,28 @@ export default function CategoryProducts() {
               onChange={(e) => setQ(e.target.value)}
               placeholder="Buscar producto..."
             />
+
             {usingMock && <span className="hint">Mostrando demo (backend no disponible)</span>}
-            <Link className="btn" style={{ border: "var(--border)" }} to="/">
-              ← Volver
+
+            <Link
+              to="/"
+              className="btn"
+              style={{
+                marginBottom: 6,
+                backgroundColor: "#0a234b",
+                color: "#ffffff",
+                padding: "10px 16px",
+                borderRadius: "14px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                lineHeight: 1,
+                whiteSpace: "nowrap",
+              }}
+            >
+              <span style={{ display: "inline-flex", alignItems: "center" }}>{flecha}</span>
+              <span style={{ fontWeight: 800 }}>Volver</span>
             </Link>
           </div>
         </div>
@@ -124,6 +159,15 @@ export default function CategoryProducts() {
             {Array.from({ length: 6 }).map((_, i) => (
               <div key={i} className="skeleton card" />
             ))}
+          </div>
+        ) : noResults ? (
+          <div className="card" style={{ padding: 18, textAlign: "center" }}>
+            <div style={{ fontWeight: 900, marginBottom: 6 }}>
+              No contamos con ese producto
+            </div>
+            <div className="muted" style={{ lineHeight: 1.5 }}>
+              Probá con otro nombre o revisá la categoría.
+            </div>
           </div>
         ) : (
           <div className="grid grid--3">

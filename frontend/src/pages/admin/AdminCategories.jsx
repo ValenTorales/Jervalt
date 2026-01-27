@@ -64,10 +64,10 @@ export default function AdminCategories() {
       </div>
 
       <div className="card admin-table">
-        <div className="admin-table__row admin-table__head">
+        <div className="admin-table__row admin-table__head admin-table--cats">
           <div>Nombre</div>
-          <div>Slug</div>
-          <div className="right">Acciones</div>
+          <div className="desktop-only ">Slug</div>
+          <div className="admin-col-actions">Acciones</div>
         </div>
 
         {loading ? (
@@ -84,14 +84,14 @@ export default function AdminCategories() {
           </div>
         ) : (
           filtered.map((c) => (
-            <div key={c.id} className="admin-table__row">
-              <div>{c.name}</div>
-              <div className="muted">{c.slug}</div>
-              <div className="right">
-                <Link className="btn" to={`/admin/categorias/${c.id}/editar`}>
+            <div key={c.id} className="admin-table__row admin-table--cats">
+              <div className="admin-cats-name w600">{c.name}</div>
+              <div className="admin-cats-slug desktop-only ">{c.slug}</div>
+              <div className="admin-cats-actions">
+                <Link className="btn btn--sm w600" to={`/admin/categorias/${c.id}/editar`}>
                   Editar
                 </Link>{" "}
-                <button className="btn btn--danger" onClick={() => onDelete(c.id)}>
+                <button className="btn btn--danger btn--sm w600" onClick={() => onDelete(c.id)}>
                   Eliminar
                 </button>
               </div>
