@@ -3,17 +3,21 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+backend/node_modules/
+frontend/node_modules/
 
 # Env
 .env
 .env.local
+frontend/.env
+backend/.env
 
 # Builds
 dist/
 build/
 
 # Uploads
-uploads/
+backend/uploads/
 
 # OS
 .DS_Store
@@ -22,3 +26,10 @@ Thumbs.db
 # SQLite
 *.sqlite
 *.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+
+# SQLite temp files
+backend/*.sqlite-shm
+backend/*.sqlite-wal
+backend/*.sqlite-journal
